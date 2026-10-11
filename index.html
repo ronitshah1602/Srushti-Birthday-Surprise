@@ -61,6 +61,7 @@ button:active{transform:scale(.96)}
 const CONFIG = {
   name: "Srushti",
   birthDate: "2003-10-12",            // YYYY-MM-DD
+  birthTime: "07:00",                // 24h HH:MM
   pin: "121003",                    // password (digits only, any length)
   intro: "For my allrounder, my personal Google, my go-to human and the person who somehow knows way too much about me.",
   introTitle: "Where do I even start?",
@@ -144,8 +145,8 @@ function intro(){
 }
 /* 3. cake */
 function cake(){
- const b=new Date(CONFIG.birthDate+"T00:00:00"),n=new Date(),ms=n-b,d=Math.floor(ms/864e5);
- let age=n.getFullYear()-b.getFullYear();if(n<new Date(n.getFullYear(),b.getMonth(),b.getDate()))age--;
+ const b=new Date(CONFIG.birthDate+"T"+CONFIG.birthTime+":00"),n=new Date(),ms=n-b,d=Math.floor(ms/864e5);
+ let age=n.getFullYear()-b.getFullYear();if(n<new Date(n.getFullYear(),b.getMonth(),b.getDate(),b.getHours(),b.getMinutes()))age--;
  const f=x=>x.toLocaleString();
  show(`<h2>Happy Birthday ${CONFIG.name} 🎂</h2><p class="sub">The world has been better since ✨</p>
  <div class="stats"><div><b>${age}</b><small>YEARS</small></div><div><b>${f(d)}</b><small>DAYS</small></div><div><b id="sh">${f(Math.floor(ms/36e5))}</b><small>HOURS</small></div><div><b id="sm">${f(Math.floor(ms/6e4))}</b><small>MINUTES</small></div></div>
